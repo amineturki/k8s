@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dari-deployment2
+  name: dari-deployment1
   labels:
-    app: dari-deployment
+    app: dari-deployment1
 spec:
   replicas: 1
   selector:
