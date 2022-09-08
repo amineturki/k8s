@@ -1,13 +1,25 @@
----
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: front-nginx
+  name: dari-deployment
   labels:
-    app: web
+    app: dari-deployment
 spec:
-  containers:
-    - name: front-nginx
-      image: nginx
-      ports:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: dari-app-pod
+      app: demo-dari-app
+  template:
+    metadata:
+      name: dari-app-pod
+      labels:
+        name: dari-app-pod
+        app: demo-dari-app
+
+    spec:
+      containers:
+      - name: dari
+        image: amineturki/darifront:v2
+        ports:
         - containerPort: 80
